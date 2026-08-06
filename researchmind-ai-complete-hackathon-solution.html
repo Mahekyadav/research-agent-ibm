@@ -1,0 +1,763 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ResearchMind AI — Hackathon Solution</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.7;color:#1f2328;background:#fff;padding:24px 16px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-size:26px;font-weight:700;color:#1f2328;margin-bottom:4px}
+.tagline{color:#57606a;font-size:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #e5e7eb}
+h2{font-size:17px;font-weight:700;color:#1f2328;margin:32px 0 10px;padding-left:10px;border-left:3px solid #3b82d4}
+h3{font-size:14px;font-weight:700;color:#1f2328;margin:18px 0 6px}
+h4{font-size:13px;font-weight:600;color:#3b82d4;margin:12px 0 4px}
+p{margin-bottom:10px;color:#1f2328}
+ul,ol{margin:6px 0 10px 20px}
+li{margin-bottom:4px}
+code{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:4px;padding:1px 5px;font-size:12px;font-family:"Consolas","Courier New",monospace;color:#7c5cd8}
+pre{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:6px;padding:14px 16px;overflow-x:auto;font-size:12px;font-family:"Consolas","Courier New",monospace;color:#1f2328;margin:10px 0}
+.badge{display:inline-block;background:#f0f4ff;color:#3b82d4;border:1px solid #c7d9f8;border-radius:12px;padding:2px 9px;font-size:11px;font-weight:600;margin:2px 3px 2px 0}
+.badge-purple{background:#f5f0ff;color:#7c5cd8;border-color:#d8c7f8}
+.badge-green{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0}
+.badge-orange{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+.card{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:14px 16px;margin:10px 0}
+.card-accent{border-left:3px solid #3b82d4}
+.card-purple{border-left:3px solid #7c5cd8}
+.card-green{border-left:3px solid #16a34a}
+.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.agent-card{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:6px;padding:12px 14px}
+.agent-card h4{margin-top:0}
+.arch-box{background:#f7f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin:10px 0;text-align:center}
+.arch-row{display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0;flex-wrap:wrap}
+.arch-node{background:#fff;border:1px solid #c7d9f8;color:#3b82d4;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600}
+.arch-node-purple{border-color:#d8c7f8;color:#7c5cd8;background:#fff}
+.arch-node-green{border-color:#bbf7d0;color:#16a34a;background:#fff}
+.arch-arrow{color:#57606a;font-size:16px;font-weight:300}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th{background:#f7f8fa;border:1px solid #e5e7eb;padding:8px 10px;text-align:left;font-weight:600;color:#1f2328}
+td{border:1px solid #e5e7eb;padding:7px 10px;vertical-align:top;color:#1f2328}
+tr:nth-child(even) td{background:#fafafa}
+.divider{border:none;border-top:1px solid #e5e7eb;margin:28px 0}
+.pitch{background:#f0f4ff;border:1px solid #c7d9f8;border-radius:8px;padding:16px 18px;margin:10px 0}
+.pitch p{color:#1f2328;font-style:italic;font-size:14px}
+.folder{font-family:"Consolas","Courier New",monospace;font-size:12px;background:#f7f8fa;border:1px solid #e5e7eb;border-radius:6px;padding:14px 16px;line-height:1.8;color:#1f2328}
+.folder .dir{color:#3b82d4;font-weight:600}
+.folder .file{color:#57606a}
+.section-num{color:#57606a;font-weight:400;font-size:13px}
+.usp-list li{margin-bottom:8px}
+.usp-list li strong{color:#3b82d4}
+footer{text-align:center;font-size:12px;color:#57606a;margin-top:40px;padding-top:16px;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+
+<h1>🔬 ResearchMind AI</h1>
+<p class="tagline">
+  <strong>Agentic AI Research Assistant</strong>  ·  Built on IBM Granite &amp; IBM Langflow  ·  Complete Hackathon Solution
+  <br />
+  <span class="badge">IBM Granite</span>
+  <span class="badge">IBM Langflow</span>
+  <span class="badge badge-purple">IBM Cloud</span>
+  <span class="badge badge-green">Multi-Agent AI</span>
+  <span class="badge badge-orange">Production-Ready</span>
+</p>
+
+
+<h2><span class="section-num">01  </span>Project Name</h2>
+<div class="card card-accent">
+  <h3 style="font-size:18px;margin:0 0 4px">ResearchMind AI</h3>
+  <p style="color:#57606a;margin:0"><em>"Where Knowledge Connects — Think Deeper, Research Faster, Discover More."</em></p>
+</div>
+<p>The name communicates depth of understanding (Mind), domain focus (Research), and intelligent amplification (AI). The tagline positions it as both a productivity tool and an intellectual partner.</p>
+
+
+<h2><span class="section-num">02  </span>Problem Understanding</h2>
+<p>Modern research is fragmented across arXiv, PubMed, IEEE Xplore, Semantic Scholar, institutional repositories, and personal note libraries. The core pains are:</p>
+<ul>
+  <li><strong>Information overload</strong> — thousands of papers published daily; impossible to read manually.</li>
+  <li><strong>Shallow summarization</strong> — existing tools summarize individually rather than synthesizing across sources.</li>
+  <li><strong>Gap blindness</strong> — researchers miss white spaces in literature because no tool actively highlights them.</li>
+  <li><strong>Disconnected toolchains</strong> — PDF readers, citation managers, note tools, and search engines are siloed.</li>
+  <li><strong>No predictive intelligence</strong> — no tool forecasts where a research domain is heading.</li>
+  <li><strong>Multimodal friction</strong> — graphs, tables, equations in PDFs cannot be queried conversationally.</li>
+</ul>
+
+
+<h2><span class="section-num">03  </span>Solution Overview</h2>
+<p><strong>ResearchMind AI</strong> is a fully agentic, multimodal research intelligence platform. It combines eleven specialized AI agents orchestrated via <strong>IBM Langflow</strong>, powered by <strong>IBM Granite models</strong>, and deployed on <strong>IBM Cloud</strong>. A researcher can upload PDFs, paste URLs, write notes, or ask free-form questions, and the system returns a synthesized literature review, detected research gaps, trend predictions, knowledge graphs, and a ready-to-submit research proposal — all in one session.</p>
+
+
+<h2><span class="section-num">04  </span>Why This Solution is Innovative</h2>
+<ul>
+  <li><strong>True synthesis, not summaries</strong> — Granite compares and contrasts findings across papers to generate coherent narratives with contradictions highlighted.</li>
+  <li><strong>Proactive gap detection</strong> — a dedicated agent maps the citation graph and semantic space to surface unexplored intersections.</li>
+  <li><strong>Multimodal understanding</strong> — charts, tables, and equations are extracted and reasoned over, not ignored.</li>
+  <li><strong>Agent memory &amp; continuity</strong> — agents share a structured working memory (Redis + vector store), enabling multi-turn research sessions.</li>
+  <li><strong>One-click outputs</strong> — from raw PDFs to a formatted literature review, bibliography, research proposal, and slide deck in one workflow.</li>
+  <li><strong>IBM-native</strong> — fully built on IBM Cloud, Granite, and Langflow, making it enterprise-ready and auditable.</li>
+</ul>
+
+
+<h2><span class="section-num">05  </span>System Architecture</h2>
+<div class="arch-box">
+  <div class="arch-row"><div class="arch-node">👤 Researcher (User)</div></div>
+  <div class="arch-row"><div class="arch-arrow">↓ Text / PDF / Image / URL / Voice</div></div>
+  <div class="arch-row">
+    <div class="arch-node">React + Next.js Frontend</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ REST / WebSocket</div></div>
+  <div class="arch-row">
+    <div class="arch-node">FastAPI Gateway (IBM Code Engine)</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ Orchestration</div></div>
+  <div class="arch-row">
+    <div class="arch-node arch-node-purple">IBM Langflow Orchestration Layer</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ Agent Dispatch</div></div>
+  <div class="arch-row">
+    <div class="arch-node">Query Agent</div>
+    <div class="arch-node">Search Agent</div>
+    <div class="arch-node">PDF Agent</div>
+    <div class="arch-node">OCR Agent</div>
+    <div class="arch-node">Review Agent</div>
+    <div class="arch-node">Gap Agent</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ LLM Calls</div></div>
+  <div class="arch-row">
+    <div class="arch-node arch-node-purple">IBM Granite 13B / 34B (watsonx.ai)</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ Semantic Retrieval</div></div>
+  <div class="arch-row">
+    <div class="arch-node arch-node-green">Milvus / Chroma Vector DB (IBM Cloud)</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ Source Retrieval</div></div>
+  <div class="arch-row">
+    <div class="arch-node">arXiv API</div>
+    <div class="arch-node">Semantic Scholar</div>
+    <div class="arch-node">PubMed</div>
+    <div class="arch-node">IEEE / Crossref</div>
+  </div>
+  <div class="arch-row"><div class="arch-arrow">↓ Results</div></div>
+  <div class="arch-row">
+    <div class="arch-node arch-node-green">Interactive Dashboard + Export (PDF / DOCX / BibTeX)</div>
+  </div>
+</div>
+
+<h3>Component Roles</h3>
+<table>
+  <tr><th>Component</th><th>Role</th></tr>
+  <tr><td><strong>React / Next.js Frontend</strong></td><td>Single-page application: upload panel, chat, visualizations, dashboard pages. Talks to backend via REST + WebSocket for streaming responses.</td></tr>
+  <tr><td><strong>FastAPI Gateway</strong></td><td>Single entry point. Handles auth (IBM App ID), file upload (IBM COS), job queuing (Redis), and Langflow invocation. Deployed on IBM Code Engine.</td></tr>
+  <tr><td><strong>IBM Langflow</strong></td><td>Visual orchestration layer. Each research workflow (search, review, gap detection) is a Langflow pipeline. Agents are Langflow component nodes.</td></tr>
+  <tr><td><strong>Multi-Agent Layer</strong></td><td>Eleven specialized agents (see §6). Communicate via shared Redis working memory and structured JSON messages.</td></tr>
+  <tr><td><strong>IBM Granite (watsonx.ai)</strong></td><td>Core LLM for synthesis, reasoning, summarization, and generation. Granite 13B for speed; 34B for deep analysis.</td></tr>
+  <tr><td><strong>Milvus on IBM Cloud</strong></td><td>Stores Granite text-embedding-3 vectors for all ingested papers. Powers semantic search and similarity retrieval.</td></tr>
+  <tr><td><strong>IBM Cloud Object Storage</strong></td><td>Stores raw PDFs, images, and generated reports.</td></tr>
+  <tr><td><strong>PostgreSQL (IBM Databases)</strong></td><td>Relational store: users, projects, paper metadata, citations, reviews.</td></tr>
+  <tr><td><strong>Redis (IBM Databases)</strong></td><td>Agent working memory, session state, and job queues.</td></tr>
+  <tr><td><strong>Dashboard</strong></td><td>D3.js / Recharts visualizations: knowledge graph, citation network, trend timelines, topic clusters.</td></tr>
+</table>
+
+
+<h2><span class="section-num">06  </span>Multi-Agent Design</h2>
+
+<div class="agent-grid">
+  <div class="agent-card">
+    <h4>1. Query Understanding Agent</h4>
+    <p><strong>Input:</strong> Raw user query or question.<br />
+    <strong>Output:</strong> Structured intent JSON: {topic, subtopics, time_range, modality, task_type}.<br />
+    <strong>Tools:</strong> Granite 13B (intent classification), spaCy NER.<br />
+    <strong>Role:</strong> Parses ambiguous queries into actionable parameters that drive all downstream agents. Detects whether the task is "find papers", "write review", "detect gaps", etc.</p>
+  </div>
+  <div class="agent-card">
+    <h4>2. Academic Search Agent</h4>
+    <p><strong>Input:</strong> Structured intent from Agent 1.<br />
+    <strong>Output:</strong> Ranked list of paper metadata (title, abstract, DOI, year, citations, authors).<br />
+    <strong>Tools:</strong> arXiv API, Semantic Scholar API, PubMed Entrez, IEEE Xplore API, Crossref.<br />
+    <strong>Role:</strong> Fan-out search across all academic sources, de-duplicate, and score relevance using Granite embeddings.</p>
+  </div>
+  <div class="agent-card">
+    <h4>3. PDF Processing Agent</h4>
+    <p><strong>Input:</strong> PDF files (uploaded or fetched by URL).<br />
+    <strong>Output:</strong> Structured document JSON: {sections, abstract, findings, methodology, limitations, future_work, equations, citations}.<br />
+    <strong>Tools:</strong> PyMuPDF, pdfplumber, GROBID (section parser), Granite for semantic chunking.<br />
+    <strong>Role:</strong> Deep structural extraction; chunks text into semantically meaningful passages for embedding.</p>
+  </div>
+  <div class="agent-card">
+    <h4>4. OCR / Image Analysis Agent</h4>
+    <p><strong>Input:</strong> Images of charts, graphs, tables, equations from PDFs.<br />
+    <strong>Output:</strong> Textual description + extracted data values + LaTeX equations.<br />
+    <strong>Tools:</strong> Tesseract OCR, IBM Visual Recognition, Granite multimodal, pix2text (equation OCR).<br />
+    <strong>Role:</strong> Makes visual content queryable. A bar chart becomes a data table; an equation image becomes LaTeX.</p>
+  </div>
+  <div class="agent-card">
+    <h4>5. Literature Review Agent</h4>
+    <p><strong>Input:</strong> Structured extractions from Agent 3 + 4, top-k retrieved chunks from vector DB.<br />
+    <strong>Output:</strong> Multi-section literature review: introduction, thematic synthesis, methodology comparison, contradictions, conclusions.<br />
+    <strong>Tools:</strong> Granite 34B (synthesis), LangChain MapReduce, citation formatter (APA/IEEE/MLA).<br />
+    <strong>Role:</strong> Core synthesis engine. Does not summarize papers sequentially — it identifies cross-paper themes and writes a coherent narrative.</p>
+  </div>
+  <div class="agent-card">
+    <h4>6. Citation Validation Agent</h4>
+    <p><strong>Input:</strong> Extracted citations + DOIs from all processed papers.<br />
+    <strong>Output:</strong> Validated BibTeX, broken link flags, retraction alerts, impact factor, H-index of authors.<br />
+    <strong>Tools:</strong> Crossref API, Retraction Watch DB, OpenCitations, Unpaywall.<br />
+    <strong>Role:</strong> Ensures academic integrity. Flags retracted, predatory, or unverifiable sources.</p>
+  </div>
+  <div class="agent-card">
+    <h4>7. Research Gap Detection Agent</h4>
+    <p><strong>Input:</strong> Embeddings of all papers + citation graph + literature review.<br />
+    <strong>Output:</strong> Ranked list of research gaps with justification, affected papers, and gap score.<br />
+    <strong>Tools:</strong> Milvus nearest-neighbor analysis, Granite reasoning, citation graph topology (NetworkX).<br />
+    <strong>Role:</strong> Finds semantic white spaces — topics that are cited as future work across many papers but have no papers yet. Also detects methodological gaps.</p>
+  </div>
+  <div class="agent-card">
+    <h4>8. Trend Prediction Agent</h4>
+    <p><strong>Input:</strong> Citation counts over time, keyword frequency time series, topic cluster evolution.<br />
+    <strong>Output:</strong> Trend forecast: {topic, trajectory: rising/falling/stable, predicted_peak_year, confidence}.<br />
+    <strong>Tools:</strong> Prophet (time-series), Granite reasoning for qualitative trend narration, Semantic Scholar citation API.<br />
+    <strong>Role:</strong> Predicts which research directions will dominate in 1–3 years.</p>
+  </div>
+  <div class="agent-card">
+    <h4>9. Knowledge Graph Agent</h4>
+    <p><strong>Input:</strong> All extracted entities (concepts, methods, datasets, authors, institutions).<br />
+    <strong>Output:</strong> Knowledge graph in JSON-LD: nodes (entities), edges (relationships like "uses", "improves", "contradicts").<br />
+    <strong>Tools:</strong> spaCy + custom NER, Granite relation extraction, Neo4j (IBM Cloud), vis.js for rendering.<br />
+    <strong>Role:</strong> Builds a navigable semantic map of the research domain.</p>
+  </div>
+  <div class="agent-card">
+    <h4>10. Visualization Agent</h4>
+    <p><strong>Input:</strong> Knowledge graph, citation data, trend series, topic clusters, embeddings (UMAP-reduced).<br />
+    <strong>Output:</strong> Interactive chart configs (D3.js/Recharts JSON) for: topic clusters, citation network, evolution timeline, trend lines, radar charts.<br />
+    <strong>Tools:</strong> UMAP, D3.js, Recharts, Cytoscape.js.<br />
+    <strong>Role:</strong> Translates data structures into human-readable, interactive visualizations served to the dashboard.</p>
+  </div>
+  <div class="agent-card">
+    <h4>11. Report Generation Agent</h4>
+    <p><strong>Input:</strong> Literature review, gaps, trends, visualizations, citations, research proposal.<br />
+    <strong>Output:</strong> Formatted PDF report, DOCX report, BibTeX bibliography, PowerPoint slide deck.<br />
+    <strong>Tools:</strong> Granite 34B (proposal writing), python-docx, ReportLab, python-pptx.<br />
+    <strong>Role:</strong> Final-mile agent that packages all insights into a publication-ready output.</p>
+  </div>
+</div>
+
+<h3>Agent Communication Protocol</h3>
+<div class="card card-accent">
+  <p>All agents communicate via <strong>structured JSON messages</strong> on a Redis pub/sub bus. Each message carries: <code>agent_id</code>, <code>job_id</code>, <code>session_id</code>, <code>payload</code>, and <code>status</code>. Langflow orchestrates the DAG — no agent calls another directly. The shared <strong>working memory</strong> (Redis Hash per session) stores intermediate results so any agent can read prior outputs without re-computation.</p>
+</div>
+
+
+<h2><span class="section-num">07  </span>Langflow Workflow</h2>
+<pre>
+INPUT
+  ├── Text Query
+  ├── PDF Upload → IBM COS → PDF Processing Agent
+  ├── Image Upload → OCR/Image Analysis Agent
+  └── URL → Academic Search Agent
+         │
+         ▼
+INTENT DETECTION (Query Understanding Agent)
+  → {task_type, topics, filters, modality}
+         │
+         ▼
+DOCUMENT PROCESSING (PDF + OCR Agents)
+  → {sections, findings, equations, tables, citations}
+         │
+         ▼
+EMBEDDING (Granite text-embedding via watsonx.ai)
+  → 768-dim vectors stored in Milvus
+         │
+         ▼
+VECTOR SEARCH (Milvus ANN Search)
+  → Top-k semantically similar chunks
+         │
+         ▼
+IBM GRANITE 34B (Literature Review Agent)
+  → MapReduce synthesis over all chunks
+  → Thematic review with cross-paper reasoning
+         │
+         ▼
+RESEARCH ANALYSIS (Citation Validation Agent)
+  → Validated references, retraction flags, H-index
+         │
+         ▼
+GAP DETECTION (Research Gap Detection Agent)
+  → Semantic gap map, gap scores, opportunity list
+         │
+         ▼
+TREND PREDICTION (Trend Prediction Agent)
+  → Time-series forecast, rising/falling topics
+         │
+         ▼
+KNOWLEDGE GRAPH (Knowledge Graph Agent)
+  → Entities + relations → Neo4j
+         │
+         ▼
+VISUALIZATION (Visualization Agent)
+  → D3 configs for all chart types
+         │
+         ▼
+DASHBOARD (React Frontend)
+  → Live streaming results, interactive charts
+         │
+         ▼
+EXPORT (Report Generation Agent)
+  → PDF / DOCX / BibTeX / PPTX download
+</pre>
+
+
+<h2><span class="section-num">08  </span>IBM Granite Usage</h2>
+<table>
+  <tr><th>Capability</th><th>Granite Model</th><th>How Used</th></tr>
+  <tr><td>Text Embedding</td><td>granite-embedding-125m</td><td>Encode all paper chunks into 768-dim vectors for Milvus storage and semantic retrieval.</td></tr>
+  <tr><td>Summarization</td><td>granite-13b-chat-v2</td><td>Per-paper abstractive summaries: findings, methodology, limitations in 3 structured paragraphs.</td></tr>
+  <tr><td>Literature Review</td><td>granite-34b-code-instruct</td><td>MapReduce synthesis across all retrieved chunks. System prompt enforces academic writing style, cross-paper comparison, and citation formatting.</td></tr>
+  <tr><td>Reasoning / Gap Detection</td><td>granite-34b-code-instruct</td><td>Chain-of-thought prompting over citation topology + semantic gaps. Outputs gap justifications with confidence scores.</td></tr>
+  <tr><td>Trend Prediction</td><td>granite-13b-chat-v2</td><td>Narrates quantitative Prophet forecasts in natural language. Answers "why is topic X rising?" with cited evidence.</td></tr>
+  <tr><td>Citation Analysis</td><td>granite-13b-chat-v2</td><td>Classifies citation intent (supports / contradicts / extends / uses), detects self-citation bias.</td></tr>
+  <tr><td>Contradiction Detection</td><td>granite-34b-code-instruct</td><td>Pairwise comparison of claims across papers; outputs conflict score and explanation.</td></tr>
+  <tr><td>Research Proposal</td><td>granite-34b-code-instruct</td><td>Given gaps + trends, generates a structured 5-section research proposal (background, objective, method, expected outcomes, timeline).</td></tr>
+  <tr><td>Report Generation</td><td>granite-13b-chat-v2</td><td>Writes executive summaries, introduction sections, and slide speaker notes.</td></tr>
+  <tr><td>Chatbot / Q&amp;A</td><td>granite-13b-chat-v2</td><td>Conversational interface over the user's research corpus using RAG (Retrieve → Granite → Answer).</td></tr>
+</table>
+
+
+<h2><span class="section-num">09  </span>Features</h2>
+<h3>Core Features</h3>
+<ul>
+  <li><strong>AI-Generated Literature Review</strong> — Multi-section, thematic, citation-rich narrative across dozens of papers.</li>
+  <li><strong>Smart Citations</strong> — Inline citations auto-inserted with style selection (APA/IEEE/MLA/Chicago).</li>
+  <li><strong>Automatic Bibliography</strong> — One-click BibTeX / RIS / Endnote export from the citation graph.</li>
+  <li><strong>Research Roadmap</strong> — Visual timeline of a field's evolution + predicted next milestones.</li>
+  <li><strong>Related Papers Recommendation</strong> — Semantic similarity + citation co-occurrence hybrid ranking.</li>
+  <li><strong>Paper Similarity Score</strong> — Cosine similarity between any two papers' embeddings with explanation.</li>
+  <li><strong>Semantic Search</strong> — Query in natural language: "papers that use transformers for drug discovery after 2021."</li>
+  <li><strong>Citation Verification</strong> — CrossRef + Retraction Watch validation; flags broken, retracted, predatory links.</li>
+  <li><strong>Contradiction Detection</strong> — Surfaces pairs of papers with conflicting claims, ranked by severity.</li>
+  <li><strong>Novelty Score</strong> — Measures how semantically distant a paper is from existing literature; quantifies originality.</li>
+  <li><strong>Future Work Prediction</strong> — Extracts "future work" sections from all papers; clusters them into prediction themes.</li>
+  <li><strong>Automatic Research Proposal Generation</strong> — Gap + trend data fed into Granite to produce a full proposal draft.</li>
+  <li><strong>Personalized Reading List</strong> — User interest profile built from session history; ranked daily recommendations.</li>
+  <li><strong>Daily Research Updates</strong> — Cron job fetches new papers matching saved topics; email digest via IBM SendGrid.</li>
+  <li><strong>AI Research Assistant Chatbot</strong> — RAG-based conversational agent over the user's personal corpus.</li>
+</ul>
+
+
+<h2><span class="section-num">10  </span>Tech Stack</h2>
+<table>
+  <tr><th>Layer</th><th>Technology</th></tr>
+  <tr><td>Frontend</td><td>Next.js 14, React 18, TailwindCSS, shadcn/ui, Framer Motion</td></tr>
+  <tr><td>Backend</td><td>FastAPI (Python 3.11), Celery workers, Redis queue</td></tr>
+  <tr><td>Orchestration</td><td>IBM Langflow (self-hosted on IBM Code Engine)</td></tr>
+  <tr><td>Relational DB</td><td>PostgreSQL 15 (IBM Databases for PostgreSQL)</td></tr>
+  <tr><td>Vector DB</td><td>Milvus 2.3 (IBM Cloud Kubernetes) or Chroma (dev)</td></tr>
+  <tr><td>Graph DB</td><td>Neo4j (IBM Cloud Marketplace)</td></tr>
+  <tr><td>Cache / Queue</td><td>Redis 7 (IBM Databases for Redis)</td></tr>
+  <tr><td>Object Storage</td><td>IBM Cloud Object Storage (S3-compatible)</td></tr>
+  <tr><td>AI Models</td><td>IBM Granite (watsonx.ai) — 13b-chat-v2, 34b-code-instruct, embedding-125m</td></tr>
+  <tr><td>Additional ML</td><td>spaCy, UMAP, Prophet, sentence-transformers, GROBID</td></tr>
+  <tr><td>Auth</td><td>IBM App ID (OAuth 2.0 / OIDC)</td></tr>
+  <tr><td>Visualization</td><td>D3.js v7, Recharts, Cytoscape.js, vis-network</td></tr>
+  <tr><td>PDF Processing</td><td>PyMuPDF, pdfplumber, GROBID, ReportLab, python-docx</td></tr>
+  <tr><td>External APIs</td><td>arXiv, Semantic Scholar, PubMed, Crossref, Unpaywall, OpenCitations</td></tr>
+  <tr><td>Deployment</td><td>IBM Code Engine (containers), IBM Kubernetes Service (Milvus, Neo4j)</td></tr>
+  <tr><td>CI/CD</td><td>GitHub Actions → IBM Container Registry → Code Engine</td></tr>
+  <tr><td>Monitoring</td><td>IBM Log Analysis, IBM Cloud Monitoring (Sysdig)</td></tr>
+</table>
+
+
+<h2><span class="section-num">11  </span>Database Schema</h2>
+<pre>
+-- USERS
+users (id UUID PK, email, name, ibm_app_id_sub, interests[], created_at, plan)
+
+-- PROJECTS
+projects (id UUID PK, user_id FK, name, description, topics[], created_at, updated_at)
+
+-- PAPERS
+papers (id UUID PK, project_id FK, doi, title, authors JSONB, year,
+        abstract, venue, citation_count, pdf_url, cos_key,
+        novelty_score FLOAT, processing_status, created_at)
+
+-- PAPER_SECTIONS
+paper_sections (id UUID PK, paper_id FK, section_type ENUM(abstract,intro,
+        method,results,discussion,conclusion,future_work), content TEXT,
+        page_start INT, page_end INT)
+
+-- EMBEDDINGS
+embeddings (id UUID PK, paper_id FK, section_id FK, chunk_index INT,
+        chunk_text TEXT, vector_id VARCHAR, -- Milvus external ID
+        model VARCHAR, created_at)
+
+-- CITATIONS
+citations (id UUID PK, source_paper_id FK, target_paper_id FK,
+        target_doi VARCHAR, intent ENUM(supports,contradicts,extends,uses,background),
+        is_verified BOOL, is_retracted BOOL, impact_factor FLOAT)
+
+-- RESEARCH_NOTES
+research_notes (id UUID PK, user_id FK, project_id FK, content TEXT,
+        tags[], linked_paper_ids UUID[], created_at)
+
+-- LITERATURE_REVIEWS
+literature_reviews (id UUID PK, project_id FK, query TEXT, content TEXT,
+        paper_ids UUID[], model_version VARCHAR, word_count INT,
+        created_at, export_docx_url, export_pdf_url)
+
+-- RESEARCH_GAPS
+research_gaps (id UUID PK, project_id FK, title VARCHAR, description TEXT,
+        gap_score FLOAT, supporting_paper_ids UUID[], created_at)
+
+-- TREND_ANALYSIS
+trend_analysis (id UUID PK, project_id FK, topic VARCHAR,
+        trajectory ENUM(rising,falling,stable,emerging),
+        confidence FLOAT, forecast_data JSONB, -- {year: count} series
+        predicted_peak_year INT, created_at)
+
+-- KNOWLEDGE_GRAPH_NODES
+kg_nodes (id UUID PK, project_id FK, label VARCHAR, type ENUM(concept,method,
+        dataset,author,institution,paper), properties JSONB)
+
+-- KNOWLEDGE_GRAPH_EDGES
+kg_edges (id UUID PK, project_id FK, source_node_id FK, target_node_id FK,
+        relation VARCHAR, weight FLOAT)
+
+-- REPORTS
+reports (id UUID PK, project_id FK, type ENUM(literature_review,gap_report,
+        trend_report,proposal,full), cos_key VARCHAR,
+        format ENUM(pdf,docx,pptx,bibtex), created_at)
+
+-- READING_LIST
+reading_list (id UUID PK, user_id FK, paper_id FK, status ENUM(unread,reading,done),
+        priority INT, added_at)
+</pre>
+
+
+<h2><span class="section-num">12  </span>API Design</h2>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+  <tr><td>POST</td><td><code>/api/v1/projects</code></td><td>Create research project</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/papers/upload</code></td><td>Upload PDF(s) to COS + trigger processing</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/papers/search</code></td><td>Academic search across all sources</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/papers/{id}</code></td><td>Get paper metadata + extracted sections</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/search/semantic</code></td><td>Natural-language semantic search over vector DB</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/review/generate</code></td><td>Trigger literature review generation (async, SSE stream)</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/review/{id}</code></td><td>Get generated literature review</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/gaps/{project_id}</code></td><td>Get research gaps for a project</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/trends/{project_id}</code></td><td>Get trend forecasts</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/knowledge-graph/{project_id}</code></td><td>Get KG nodes + edges for D3 rendering</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/citations/{paper_id}</code></td><td>Get validated citation list</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/citations/validate</code></td><td>Trigger citation validation job</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/proposal/generate</code></td><td>Generate research proposal from gaps + trends</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/reports/export</code></td><td>Generate downloadable report (pdf/docx/pptx/bibtex)</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/chat</code></td><td>Conversational RAG Q&amp;A (SSE streaming)</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/recommend/{user_id}</code></td><td>Get personalized paper recommendations</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/papers/similar/{id}</code></td><td>Get top-k similar papers with similarity score</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/langflow/run</code></td><td>Execute a named Langflow pipeline with payload</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/jobs/{job_id}</code></td><td>Poll async job status</td></tr>
+  <tr><td>WS</td><td><code>/ws/stream/{session_id}</code></td><td>WebSocket for live agent progress + streaming text</td></tr>
+</table>
+
+
+<h2><span class="section-num">13  </span>Dashboard Design</h2>
+<table>
+  <tr><th>Page</th><th>Key Components</th></tr>
+  <tr><td><strong>Home</strong></td><td>Project cards, recent activity feed, AI daily digest panel, quick-start buttons (Upload PDF / Start Search / New Project)</td></tr>
+  <tr><td><strong>Search</strong></td><td>Semantic search bar with filter chips (year, venue, citation count), live results with relevance score, "Add to Project" action</td></tr>
+  <tr><td><strong>Paper Viewer</strong></td><td>Two-pane: PDF renderer left, AI sidebar right (summary, key findings, linked concepts, similar papers, chatbot). Inline equation/chart extraction display.</td></tr>
+  <tr><td><strong>Literature Review</strong></td><td>Generated review editor (rich text), section navigator, citation hover-cards, contradiction highlights, export toolbar (PDF/DOCX)</td></tr>
+  <tr><td><strong>Trend Analysis</strong></td><td>Line chart (topic frequency over time), rising topics heatmap, Granite-narrated trend summary, future forecast band chart</td></tr>
+  <tr><td><strong>Knowledge Graph</strong></td><td>Full-screen Cytoscape force-directed graph; node type filters; click-to-inspect entity card; relation filter sidebar</td></tr>
+  <tr><td><strong>Citation Network</strong></td><td>vis-network graph; node = paper, edge = citation; color = citation intent; retraction badges; influence centrality rings</td></tr>
+  <tr><td><strong>Research Gap</strong></td><td>Ranked gap cards with score meter, supporting evidence chips, one-click "Turn into Proposal" CTA, UMAP cluster scatter plot</td></tr>
+  <tr><td><strong>Research Proposal</strong></td><td>AI-generated proposal sections (editable), timeline Gantt chart, export to DOCX/PDF, share link</td></tr>
+  <tr><td><strong>Settings</strong></td><td>Profile, IBM watsonx.ai API key management, notification preferences, citation style selector, reading list, team invite</td></tr>
+</table>
+
+
+<h2><span class="section-num">14  </span>AI Workflow — Upload to Final Report</h2>
+<div class="card card-purple">
+  <ol>
+    <li><strong>User uploads PDF</strong> → stored in IBM COS; job queued in Redis.</li>
+    <li><strong>PDF Processing Agent</strong> extracts text, splits into sections, identifies figures/tables/equations. OCR Agent processes any embedded images.</li>
+    <li><strong>Granite embedding model</strong> encodes each chunk → vectors upserted into Milvus with paper_id metadata.</li>
+    <li><strong>Citation Validation Agent</strong> extracts references → verifies against Crossref → flags issues.</li>
+    <li><strong>User initiates "Generate Literature Review"</strong> → Query Understanding Agent parses scope.</li>
+    <li><strong>Milvus ANN search</strong> retrieves top-k chunks → augmented with PostgreSQL metadata.</li>
+    <li><strong>Granite 34B Literature Review Agent</strong> runs MapReduce: map = per-paper synthesis prompt; reduce = thematic synthesis prompt with cross-paper comparison instructions.</li>
+    <li><strong>Gap Detection Agent</strong> analyzes citation graph topology + semantic distance matrix → produces gap list.</li>
+    <li><strong>Trend Agent</strong> runs Prophet on citation time series → Granite narrates the forecast.</li>
+    <li><strong>Knowledge Graph Agent</strong> runs NER + relation extraction → writes to Neo4j.</li>
+    <li><strong>Visualization Agent</strong> generates D3 configs → streamed to frontend via WebSocket.</li>
+    <li><strong>Report Generation Agent</strong> assembles all outputs → Granite writes executive summary + proposal → python-docx/ReportLab renders final DOCX/PDF → uploaded to IBM COS → download link returned.</li>
+  </ol>
+</div>
+
+
+<h2><span class="section-num">15  </span>Future Scope</h2>
+<ul>
+  <li>Integration with Zotero / Mendeley for bidirectional sync.</li>
+  <li>Collaborative multi-user research sessions with real-time co-editing.</li>
+  <li>Fine-tuned Granite model on domain-specific corpora (biomedicine, law, finance).</li>
+  <li>Autonomous research planner: given a goal, it breaks down a 3-month research plan.</li>
+  <li>Preprint monitoring — alerts when a tracked paper is published or cited.</li>
+  <li>Integration with Jupyter Notebooks for data-driven research workflows.</li>
+  <li>Mobile app (React Native) for on-the-go reading list management.</li>
+</ul>
+
+
+<h2><span class="section-num">16  </span>Scalability</h2>
+<ul>
+  <li><strong>IBM Code Engine</strong> auto-scales FastAPI and Celery workers to zero on idle; scales to hundreds of instances on load.</li>
+  <li><strong>Milvus</strong> horizontal sharding supports billions of vectors; IBM Kubernetes Service manages node pools.</li>
+  <li><strong>Celery + Redis</strong> task queue decouples heavy PDF processing from the request cycle.</li>
+  <li><strong>Langflow pipelines</strong> are stateless and can run in parallel for different sessions.</li>
+  <li><strong>PostgreSQL read replicas</strong> on IBM Databases for high-read workloads.</li>
+  <li><strong>IBM COS</strong> is infinitely scalable for PDF/report storage with lifecycle policies.</li>
+</ul>
+
+
+<h2><span class="section-num">17  </span>Security</h2>
+<ul>
+  <li><strong>IBM App ID</strong> — OAuth 2.0 / OIDC authentication; JWT tokens verified on every API request.</li>
+  <li><strong>Data isolation</strong> — all DB queries scoped by <code>user_id</code>; no cross-tenant data leakage.</li>
+  <li><strong>IBM COS</strong> — server-side AES-256 encryption at rest; HTTPS in transit.</li>
+  <li><strong>Secrets management</strong> — IBM Secrets Manager for all API keys (watsonx.ai, external APIs).</li>
+  <li><strong>PII handling</strong> — author names/emails anonymized in logs; GDPR-compliant data deletion endpoints.</li>
+  <li><strong>Rate limiting</strong> — per-user API rate limits enforced at the FastAPI gateway level.</li>
+  <li><strong>Vulnerability scanning</strong> — IBM Container Registry scans all images before deployment.</li>
+</ul>
+
+
+<h2><span class="section-num">18  </span>IBM Cloud Services Used</h2>
+<table>
+  <tr><th>Service</th><th>Purpose</th></tr>
+  <tr><td>IBM watsonx.ai</td><td>Granite LLM inference (chat, code, embedding models)</td></tr>
+  <tr><td>IBM Langflow</td><td>Agentic pipeline orchestration (visual + API)</td></tr>
+  <tr><td>IBM Code Engine</td><td>Serverless container hosting for FastAPI, Celery, Langflow</td></tr>
+  <tr><td>IBM Kubernetes Service</td><td>Managed K8s for Milvus, Neo4j, stateful workloads</td></tr>
+  <tr><td>IBM Cloud Object Storage</td><td>PDF, image, and report file storage</td></tr>
+  <tr><td>IBM Databases for PostgreSQL</td><td>Relational data (users, papers, reviews, citations)</td></tr>
+  <tr><td>IBM Databases for Redis</td><td>Job queues, session memory, caching</td></tr>
+  <tr><td>IBM App ID</td><td>Authentication and authorization (OAuth 2.0)</td></tr>
+  <tr><td>IBM Secrets Manager</td><td>Secure storage of API keys and credentials</td></tr>
+  <tr><td>IBM Log Analysis</td><td>Centralized application logging</td></tr>
+  <tr><td>IBM Cloud Monitoring</td><td>Metrics, alerts, dashboards (Sysdig)</td></tr>
+  <tr><td>IBM Container Registry</td><td>Docker image storage + vulnerability scanning</td></tr>
+  <tr><td>IBM Event Notifications</td><td>Email/webhook for daily digest and alerts</td></tr>
+</table>
+
+
+<h2><span class="section-num">19  </span>Evaluation Metrics</h2>
+<table>
+  <tr><th>Metric</th><th>Target</th></tr>
+  <tr><td>Literature Review ROUGE-L score vs. human baseline</td><td>&gt; 0.45</td></tr>
+  <tr><td>Citation accuracy (verified against Crossref)</td><td>&gt; 95%</td></tr>
+  <tr><td>Semantic search Recall@10</td><td>&gt; 0.80</td></tr>
+  <tr><td>Research gap precision (expert evaluation)</td><td>&gt; 70%</td></tr>
+  <tr><td>Trend prediction MAE (citation count forecast)</td><td>&lt; 15%</td></tr>
+  <tr><td>PDF processing time (10-page paper)</td><td>&lt; 30 seconds</td></tr>
+  <tr><td>Literature review generation time (10 papers)</td><td>&lt; 90 seconds</td></tr>
+  <tr><td>API p95 latency</td><td>&lt; 500 ms (non-LLM endpoints)</td></tr>
+  <tr><td>User satisfaction (SUS score)</td><td>&gt; 75 / 100</td></tr>
+</table>
+
+
+<h2><span class="section-num">20  </span>Demo Flow — 5-Minute Hackathon Demo</h2>
+<div class="card card-green">
+  <ol>
+    <li><strong>0:00–0:30 — Hook:</strong> Open ResearchMind AI. Show the clean home dashboard. State the problem: "Researchers waste 40% of their time just reading and organizing papers."</li>
+    <li><strong>0:30–1:30 — Upload &amp; Ingest:</strong> Upload 5 PDFs on "LLM-based drug discovery." Watch the real-time agent progress bar: PDF Agent → OCR Agent → Embedding. Show extracted sections in the Paper Viewer, including a chart decoded into a data table.</li>
+    <li><strong>1:30–2:30 — Literature Review:</strong> Click "Generate Literature Review." Watch Granite 34B stream a structured, multi-theme review with inline citations and a highlighted contradiction between two papers.</li>
+    <li><strong>2:30–3:15 — Research Gaps:</strong> Navigate to Research Gap page. Show three ranked gaps. Click the top gap — "No paper combines protein folding with LLM-guided molecular docking." Click "Generate Proposal." A 5-section research proposal appears in 20 seconds.</li>
+    <li><strong>3:15–3:45 — Knowledge Graph:</strong> Switch to the Knowledge Graph view. Zoom into the "transformer" node — show it connecting to 12 papers, 4 datasets, and 3 methodologies.</li>
+    <li><strong>3:45–4:15 — Trend Analysis:</strong> Show the Trend page — "Protein Language Models" forecasted as the #1 rising topic for 2025–2026 with a Prophet forecast band chart.</li>
+    <li><strong>4:15–4:45 — Export:</strong> Click Export → PDF report downloads with full review, gaps, citations, and bibliography. Show BibTeX file with 47 validated references.</li>
+    <li><strong>4:45–5:00 — Close:</strong> "ResearchMind AI turns weeks of literature review into minutes — powered by IBM Granite and IBM Cloud."</li>
+  </ol>
+</div>
+
+
+<h2><span class="section-num">21  </span>USP — Why This Can Win</h2>
+<ul class="usp-list">
+  <li><strong>End-to-end pipeline:</strong> No other hackathon entry will cover upload → synthesis → gaps → trends → proposal → export in one cohesive system.</li>
+  <li><strong>True multi-agent architecture:</strong> 11 specialized agents with clear separation of concerns, not a single monolithic LLM call.</li>
+  <li><strong>IBM-native depth:</strong> Uses watsonx.ai, Langflow, Code Engine, App ID, COS, PostgreSQL, Redis — judges see genuine IBM Cloud adoption.</li>
+  <li><strong>Multimodal:</strong> Charts and equations inside PDFs are analyzed, not ignored — a technically impressive differentiator.</li>
+  <li><strong>Measurable outputs:</strong> ROUGE scores, citation accuracy, gap precision — judges can validate quality claims.</li>
+  <li><strong>Real-world utility:</strong> Every PhD student and industrial researcher has this pain daily. The demo is instantly relatable.</li>
+</ul>
+
+
+<h2><span class="section-num">22  </span>Elevator Pitch</h2>
+<div class="pitch">
+  <p>"Every researcher loses weeks reading, organizing, and synthesizing papers — only to miss the most important gaps hiding in plain sight. ResearchMind AI is an agentic research intelligence platform powered by IBM Granite and IBM Langflow. Upload your papers, ask a question, and in under two minutes you get a publication-quality literature review, a ranked list of research gaps, trend forecasts, a full knowledge graph, and a ready-to-submit research proposal — all validated, cited, and exportable. We don't just summarize research. We understand it, connect it, and show you exactly where to go next."</p>
+</div>
+
+
+<h2><span class="section-num">23  </span>PPT Structure — 10 Slides</h2>
+<ol>
+  <li><strong>Title Slide</strong> — ResearchMind AI logo, tagline, team name, IBM Hackathon badge.</li>
+  <li><strong>Problem</strong> — Three statistics: papers per day on arXiv, hours spent on literature review, % of gaps missed. Pain point visualization.</li>
+  <li><strong>Solution Overview</strong> — One-sentence pitch + product screenshot mosaic.</li>
+  <li><strong>Architecture</strong> — Clean flow diagram: User → Frontend → Langflow → 11 Agents → Granite → Vector DB → Dashboard.</li>
+  <li><strong>Multi-Agent Design</strong> — Agent cards with responsibilities. Emphasize Langflow orchestration.</li>
+  <li><strong>IBM Granite Usage</strong> — Table of capabilities; quote a sample synthesized paragraph from Granite 34B.</li>
+  <li><strong>Live Demo Screenshots</strong> — Paper Viewer, Literature Review, Knowledge Graph, Research Gap, Export.</li>
+  <li><strong>Features &amp; USP</strong> — Feature grid; novelty score, contradiction detection, one-click proposal highlighted.</li>
+  <li><strong>IBM Cloud Services</strong> — IBM service icons mapped to use cases; shows ecosystem depth.</li>
+  <li><strong>Impact &amp; Future Scope</strong> — Target users (500M+ researchers globally), metrics, roadmap, call to action.</li>
+</ol>
+
+
+<h2><span class="section-num">24  </span>README Structure</h2>
+<pre>
+# ResearchMind AI
+
+## Overview
+## Features
+## Architecture
+## Prerequisites
+## Quick Start
+  ### 1. Clone the repo
+  ### 2. Configure IBM credentials (.env)
+  ### 3. Start with Docker Compose (dev)
+  ### 4. Deploy to IBM Cloud (prod)
+## Environment Variables
+## Langflow Pipeline Import
+## API Documentation
+## Database Setup (migrations)
+## Running Tests
+## Demo Video
+## Team
+## License
+</pre>
+
+
+<h2><span class="section-num">25  </span>Folder Structure</h2>
+<div class="folder">
+<span class="dir">researchmind-ai/</span><br />
+├── <span class="dir">frontend/</span>                          <span class="file"># Next.js 14 app</span><br />
+│   ├── <span class="dir">app/</span><br />
+│   │   ├── <span class="dir">(dashboard)/</span><br />
+│   │   │   ├── <span class="file">page.tsx</span>              <span class="file"># Home</span><br />
+│   │   │   ├── <span class="dir">search/page.tsx</span><br />
+│   │   │   ├── <span class="dir">papers/[id]/page.tsx</span><br />
+│   │   │   ├── <span class="dir">review/page.tsx</span><br />
+│   │   │   ├── <span class="dir">trends/page.tsx</span><br />
+│   │   │   ├── <span class="dir">knowledge-graph/page.tsx</span><br />
+│   │   │   ├── <span class="dir">citations/page.tsx</span><br />
+│   │   │   ├── <span class="dir">gaps/page.tsx</span><br />
+│   │   │   ├── <span class="dir">proposal/page.tsx</span><br />
+│   │   │   └── <span class="dir">settings/page.tsx</span><br />
+│   │   └── <span class="dir">api/</span>                      <span class="file"># Next.js API routes (BFF)</span><br />
+│   ├── <span class="dir">components/</span><br />
+│   │   ├── <span class="dir">charts/</span>               <span class="file"># D3, Recharts, Cytoscape wrappers</span><br />
+│   │   ├── <span class="dir">paper-viewer/</span><br />
+│   │   ├── <span class="dir">chat/</span><br />
+│   │   └── <span class="dir">ui/</span>                   <span class="file"># shadcn/ui components</span><br />
+│   └── <span class="file">Dockerfile</span><br />
+│<br />
+├── <span class="dir">backend/</span>                           <span class="file"># FastAPI application</span><br />
+│   ├── <span class="dir">app/</span><br />
+│   │   ├── <span class="dir">api/v1/</span><br />
+│   │   │   ├── <span class="file">papers.py</span><br />
+│   │   │   ├── <span class="file">review.py</span><br />
+│   │   │   ├── <span class="file">gaps.py</span><br />
+│   │   │   ├── <span class="file">trends.py</span><br />
+│   │   │   ├── <span class="file">knowledge_graph.py</span><br />
+│   │   │   ├── <span class="file">citations.py</span><br />
+│   │   │   ├── <span class="file">reports.py</span><br />
+│   │   │   ├── <span class="file">chat.py</span><br />
+│   │   │   └── <span class="file">langflow.py</span><br />
+│   │   ├── <span class="dir">agents/</span><br />
+│   │   │   ├── <span class="file">query_agent.py</span><br />
+│   │   │   ├── <span class="file">search_agent.py</span><br />
+│   │   │   ├── <span class="file">pdf_agent.py</span><br />
+│   │   │   ├── <span class="file">ocr_agent.py</span><br />
+│   │   │   ├── <span class="file">review_agent.py</span><br />
+│   │   │   ├── <span class="file">citation_agent.py</span><br />
+│   │   │   ├── <span class="file">gap_agent.py</span><br />
+│   │   │   ├── <span class="file">trend_agent.py</span><br />
+│   │   │   ├── <span class="file">kg_agent.py</span><br />
+│   │   │   ├── <span class="file">viz_agent.py</span><br />
+│   │   │   └── <span class="file">report_agent.py</span><br />
+│   │   ├── <span class="dir">services/</span><br />
+│   │   │   ├── <span class="file">granite.py</span>            <span class="file"># watsonx.ai client</span><br />
+│   │   │   ├── <span class="file">milvus.py</span>             <span class="file"># vector DB client</span><br />
+│   │   │   ├── <span class="file">cos.py</span>                <span class="file"># IBM COS client</span><br />
+│   │   │   ├── <span class="file">neo4j_client.py</span><br />
+│   │   │   └── <span class="file">external_apis.py</span>      <span class="file"># arXiv, Semantic Scholar…</span><br />
+│   │   ├── <span class="dir">models/</span>               <span class="file"># SQLAlchemy ORM models</span><br />
+│   │   ├── <span class="dir">workers/</span>              <span class="file"># Celery tasks</span><br />
+│   │   │   ├── <span class="file">ingest_worker.py</span><br />
+│   │   │   └── <span class="file">review_worker.py</span><br />
+│   │   └── <span class="file">main.py</span><br />
+│   ├── <span class="dir">migrations/</span>                   <span class="file"># Alembic DB migrations</span><br />
+│   ├── <span class="file">requirements.txt</span><br />
+│   └── <span class="file">Dockerfile</span><br />
+│<br />
+├── <span class="dir">langflow/</span>                          <span class="file"># Langflow pipeline definitions</span><br />
+│   ├── <span class="file">research_review_pipeline.json</span><br />
+│   ├── <span class="file">gap_detection_pipeline.json</span><br />
+│   ├── <span class="file">trend_analysis_pipeline.json</span><br />
+│   └── <span class="file">chat_rag_pipeline.json</span><br />
+│<br />
+├── <span class="dir">ml/</span>                                <span class="file"># Standalone ML scripts</span><br />
+│   ├── <span class="file">umap_clustering.py</span><br />
+│   ├── <span class="file">trend_forecast.py</span><br />
+│   └── <span class="file">novelty_scorer.py</span><br />
+│<br />
+├── <span class="dir">infra/</span>                             <span class="file"># IBM Cloud deployment</span><br />
+│   ├── <span class="dir">kubernetes/</span>               <span class="file"># IKS manifests (Milvus, Neo4j)</span><br />
+│   ├── <span class="dir">code-engine/</span>              <span class="file"># Code Engine app configs</span><br />
+│   └── <span class="dir">terraform/</span>                <span class="file"># IBM Cloud IaC</span><br />
+│<br />
+├── <span class="dir">tests/</span><br />
+│   ├── <span class="dir">unit/</span><br />
+│   └── <span class="dir">integration/</span><br />
+│<br />
+├── <span class="file">docker-compose.yml</span>                 <span class="file"># Local dev stack</span><br />
+├── <span class="file">.env.example</span><br />
+└── <span class="file">README.md</span>
+</div>
+
+
+<h2><span class="section-num">26  </span>UI Design</h2>
+<p>The UI is inspired by the <strong>clarity of Notion</strong>, the <strong>search-first UX of Perplexity</strong>, and the <strong>academic credibility of Google Scholar</strong>:</p>
+<ul>
+  <li><strong>Layout:</strong> Fixed left sidebar (64px icon rail + expandable 240px nav) + main content area. No top navbar clutter.</li>
+  <li><strong>Typography:</strong> Inter for UI, Lora for review text (academic feel), JetBrains Mono for code/equations.</li>
+  <li><strong>Color system:</strong> White base (#ffffff), surface (#f7f8fa), IBM Blue (#0062ff) as primary action, Violet (#7c3aed) for AI-generated content indicators, semantic Red for contradictions, Green for validated citations.</li>
+  <li><strong>AI transparency:</strong> Every AI-generated block has a subtle violet left border and "Generated by Granite" micro-label — building trust.</li>
+  <li><strong>Progressive disclosure:</strong> Paper cards show title + 2-line abstract; expand inline to full extracted sections. No modal hell.</li>
+  <li><strong>Chat panel:</strong> Slide-in right drawer with the research chatbot — available on every page without navigation.</li>
+  <li><strong>Agent status bar:</strong> A thin progress bar at the top of the page shows live agent pipeline status during processing (e.g., "PDF Agent ✓ → Embedding ✓ → Granite Synthesis…").</li>
+  <li><strong>Dark mode:</strong> Full dark theme with #0d1117 base, toggled via system preference or manual switch.</li>
+</ul>
+
+
+<h2><span class="section-num">27  </span>Bonus Features</h2>
+<table>
+  <tr><th>Bonus Feature</th><th>Description</th></tr>
+  <tr><td><strong>Autonomous Research Planning</strong></td><td>Given a research goal, Granite creates a week-by-week reading + experiment plan with paper assignments and milestones.</td></tr>
+  <tr><td><strong>AI Debate Between Papers</strong></td><td>Select two conflicting papers — Granite generates a structured debate: Paper A argues X because...; Paper B counters with Y because... Final verdict with confidence.</td></tr>
+  <tr><td><strong>Voice-Based Research</strong></td><td>IBM Watson Speech-to-Text + Text-to-Speech. Ask questions verbally; hear the literature review summary read back.</td></tr>
+  <tr><td><strong>Explain in Simple Language</strong></td><td>One-click "ELI5" mode on any paper section. Granite rewrites jargon-heavy content for a high-school reading level.</td></tr>
+  <tr><td><strong>One-Click Survey Paper Generator</strong></td><td>Formats the literature review + gaps + references into a complete survey paper template (LaTeX / DOCX) ready for submission to arXiv.</td></tr>
+  <tr><td><strong>Interactive Citation Explorer</strong></td><td>Click any citation in the review → instantly expand into the cited paper's summary, without leaving the review page.</td></tr>
+  <tr><td><strong>AI-Powered Peer Review</strong></td><td>Upload your own draft paper — Granite evaluates it against the literature, scoring originality, methodology, and significance with actionable feedback.</td></tr>
+  <tr><td><strong>Research Timeline Prediction</strong></td><td>Given a topic, predict: "This field will likely achieve X by 2026, Y by 2028" based on trend extrapolation + Granite reasoning.</td></tr>
+  <tr><td><strong>Personalized Research Mentor</strong></td><td>After analyzing reading history and notes, Granite acts as a mentor: "Based on your work on transformers, you should next explore state-space models — here are 5 papers."</td></tr>
+  <tr><td><strong>Automatic Experiment Suggestion</strong></td><td>From a detected research gap, Granite proposes 3 concrete experiments with dataset suggestions, baselines, and evaluation metrics.</td></tr>
+  <tr><td><strong>Multi-Agent Collaboration Mode</strong></td><td>Multiple agents run in parallel visible to the user — a "research war room" view showing each agent's live output in a split panel.</td></tr>
+</table>
+
+<hr class="divider" />
+<footer>Made with IBM Bob</footer>
+</div>
+</body>
+</html>

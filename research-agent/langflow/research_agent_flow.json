@@ -1,0 +1,233 @@
+{
+  "id": "research-agent-langflow",
+  "name": "ResearchMind — IBM WatsonX Research Agent",
+  "description": "Agentic research companion: source aggregation, literature synthesis, trend analysis, knowledge graph — powered by IBM WatsonX Granite + Slate",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "granite_llm",
+      "type": "WatsonxLLM",
+      "display_name": "IBM Granite 13B Instruct",
+      "description": "Core LLM for research synthesis, trend analysis, and citation gap detection",
+      "inputs": {
+        "model_id": "ibm/granite-13b-instruct-v2",
+        "url": "{WATSONX_URL}",
+        "apikey": "{WATSONX_API_KEY}",
+        "project_id": "{WATSONX_PROJECT_ID}",
+        "decoding_method": "greedy",
+        "temperature": 0.5,
+        "max_new_tokens": 2000,
+        "top_k": 40,
+        "top_p": 0.85,
+        "repetition_penalty": 1.15
+      }
+    },
+    {
+      "id": "slate_embeddings",
+      "type": "WatsonxEmbeddings",
+      "display_name": "IBM Slate 125M Embeddings",
+      "description": "Dense retrieval embeddings for semantic paper search",
+      "inputs": {
+        "model_id": "ibm/slate-125m-english-rtrvr",
+        "url": "{WATSONX_URL}",
+        "apikey": "{WATSONX_API_KEY}",
+        "project_id": "{WATSONX_PROJECT_ID}",
+        "truncate_input_tokens": 512
+      }
+    },
+    {
+      "id": "arxiv_loader",
+      "type": "ArxivLoader",
+      "display_name": "arXiv Paper Fetcher",
+      "description": "Fetch research papers from arXiv by query",
+      "inputs": {
+        "base_url": "http://export.arxiv.org/api/query",
+        "max_results": 10,
+        "sort_by": "relevance"
+      }
+    },
+    {
+      "id": "semantic_scholar_loader",
+      "type": "SemanticScholarLoader",
+      "display_name": "Semantic Scholar Fetcher",
+      "description": "Fetch papers with citation counts from Semantic Scholar",
+      "inputs": {
+        "limit": 10,
+        "fields": "title,abstract,authors,year,citationCount,url"
+      }
+    },
+    {
+      "id": "crossref_loader",
+      "type": "CrossRefLoader",
+      "display_name": "CrossRef Journal Fetcher",
+      "description": "Fetch peer-reviewed journal articles from CrossRef",
+      "inputs": {
+        "rows": 10
+      }
+    },
+    {
+      "id": "pdf_loader",
+      "type": "PyPDFLoader",
+      "display_name": "PDF Research Paper Loader",
+      "description": "Load uploaded PDF research papers",
+      "inputs": {
+        "upload_directory": "./data/documents"
+      }
+    },
+    {
+      "id": "text_splitter",
+      "type": "RecursiveCharacterTextSplitter",
+      "display_name": "Academic Text Chunker",
+      "description": "Split papers into semantically coherent chunks",
+      "inputs": {
+        "chunk_size": 1000,
+        "chunk_overlap": 200,
+        "separators": ["\n\n", "\n", ". ", "? ", " ", ""]
+      }
+    },
+    {
+      "id": "chroma_store",
+      "type": "Chroma",
+      "display_name": "Research Knowledge Base (ChromaDB)",
+      "description": "Persistent vector store for all indexed research papers",
+      "inputs": {
+        "collection_name": "research_knowledge_base",
+        "persist_directory": "./data/vector_store",
+        "embedding_function": "slate_embeddings"
+      }
+    },
+    {
+      "id": "retriever",
+      "type": "VectorStoreRetriever",
+      "display_name": "Semantic Paper Retriever",
+      "description": "Retrieve top-k relevant paper chunks for any query",
+      "inputs": {
+        "vector_store": "chroma_store",
+        "search_type": "similarity",
+        "k": 8
+      }
+    },
+    {
+      "id": "literature_review_chain",
+      "type": "RetrievalQA",
+      "display_name": "Literature Review Chain",
+      "description": "Synthesize literature into structured review using retrieved context",
+      "inputs": {
+        "llm": "granite_llm",
+        "retriever": "retriever",
+        "chain_type": "stuff",
+        "return_source_documents": true,
+        "prompt": {
+          "template": "You are ResearchMind (IBM WatsonX Granite). Synthesize the following research context into a structured literature review.\n\nCONTEXT:\n{context}\n\nQUERY: {question}\n\nLITERATURE REVIEW:",
+          "input_variables": ["context", "question"]
+        }
+      }
+    },
+    {
+      "id": "trend_analysis_chain",
+      "type": "LLMChain",
+      "display_name": "Trend Analysis Chain",
+      "description": "Identify emerging trends and predict future research directions",
+      "inputs": {
+        "llm": "granite_llm",
+        "prompt": {
+          "template": "You are ResearchMind. Analyze trends and emerging directions.\n\nCORPUS:\n{context}\n\nDOMAIN: {domain}\n\nTREND ANALYSIS:",
+          "input_variables": ["context", "domain"]
+        }
+      }
+    },
+    {
+      "id": "citation_gap_chain",
+      "type": "LLMChain",
+      "display_name": "Citation Gap Detector",
+      "description": "Identify understudied areas and missing research connections",
+      "inputs": {
+        "llm": "granite_llm",
+        "prompt": {
+          "template": "You are ResearchMind. Detect citation gaps and understudied areas.\n\nLITERATURE:\n{context}\n\nTOPIC: {topic}\n\nCITATION GAP ANALYSIS:",
+          "input_variables": ["context", "topic"]
+        }
+      }
+    },
+    {
+      "id": "knowledge_graph_chain",
+      "type": "LLMChain",
+      "display_name": "Knowledge Graph Builder",
+      "description": "Extract entities and relationships as a structured knowledge graph",
+      "inputs": {
+        "llm": "granite_llm",
+        "prompt": {
+          "template": "Extract a JSON knowledge graph from the following research context.\n\nCONTEXT:\n{context}\n\nTOPIC: {topic}\n\nReturn JSON only:",
+          "input_variables": ["context", "topic"]
+        }
+      }
+    },
+    {
+      "id": "conversation_memory",
+      "type": "ConversationBufferWindowMemory",
+      "display_name": "Research Session Memory",
+      "description": "Maintain multi-turn research conversation context",
+      "inputs": {
+        "k": 12,
+        "memory_key": "chat_history",
+        "return_messages": true
+      }
+    },
+    {
+      "id": "conversational_rag",
+      "type": "ConversationalRetrievalChain",
+      "display_name": "Conversational Research Agent",
+      "description": "Multi-turn academic Q&A with session memory",
+      "inputs": {
+        "llm": "granite_llm",
+        "retriever": "retriever",
+        "memory": "conversation_memory",
+        "return_source_documents": true
+      }
+    },
+    {
+      "id": "output_parser",
+      "type": "StrOutputParser",
+      "display_name": "Research Output Parser"
+    }
+  ],
+  "edges": [
+    { "source": "arxiv_loader", "target": "text_splitter" },
+    { "source": "semantic_scholar_loader", "target": "text_splitter" },
+    { "source": "crossref_loader", "target": "text_splitter" },
+    { "source": "pdf_loader", "target": "text_splitter" },
+    { "source": "text_splitter", "target": "chroma_store", "input": "documents" },
+    { "source": "slate_embeddings", "target": "chroma_store", "input": "embedding_function" },
+    { "source": "chroma_store", "target": "retriever" },
+    { "source": "retriever", "target": "literature_review_chain", "input": "retriever" },
+    { "source": "granite_llm", "target": "literature_review_chain", "input": "llm" },
+    { "source": "retriever", "target": "trend_analysis_chain", "input": "retriever" },
+    { "source": "granite_llm", "target": "trend_analysis_chain", "input": "llm" },
+    { "source": "retriever", "target": "citation_gap_chain", "input": "retriever" },
+    { "source": "granite_llm", "target": "citation_gap_chain", "input": "llm" },
+    { "source": "retriever", "target": "knowledge_graph_chain", "input": "retriever" },
+    { "source": "granite_llm", "target": "knowledge_graph_chain", "input": "llm" },
+    { "source": "retriever", "target": "conversational_rag", "input": "retriever" },
+    { "source": "granite_llm", "target": "conversational_rag", "input": "llm" },
+    { "source": "conversation_memory", "target": "conversational_rag", "input": "memory" },
+    { "source": "literature_review_chain", "target": "output_parser" }
+  ],
+  "metadata": {
+    "ibm_watsonx_models": {
+      "llm": "ibm/granite-13b-instruct-v2",
+      "embeddings": "ibm/slate-125m-english-rtrvr"
+    },
+    "academic_sources": ["arxiv", "semantic_scholar", "crossref"],
+    "vector_store": "chromadb",
+    "framework": "langchain + langflow",
+    "capabilities": [
+      "literature_review",
+      "trend_analysis",
+      "citation_gap_detection",
+      "knowledge_graph_construction",
+      "topic_clustering",
+      "paper_critique",
+      "multi_turn_research_qa"
+    ]
+  }
+}
